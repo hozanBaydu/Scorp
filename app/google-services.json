@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "34618667382",
+    "project_id": "scorp-dadf3",
+    "storage_bucket": "scorp-dadf3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:34618667382:android:0578301e526505cd42ca57",
+        "android_client_info": {
+          "package_name": "com.hozanbaydu.scorp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "34618667382-6sdofb0og6tbc2vav2n3trvftt78ak6s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDEQEClGwKjZKxN8oyMyGx3Kmpcw5aTQbw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "34618667382-6sdofb0og6tbc2vav2n3trvftt78ak6s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
