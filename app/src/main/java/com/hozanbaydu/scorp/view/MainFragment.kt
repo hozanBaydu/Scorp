@@ -36,9 +36,9 @@ class MainFragment @Inject constructor(
         val binding = FragmentMainBinding.bind(view)
         fragmentBinding = binding
 
-        binding.imageView.setOnClickListener {
-            mainAdapter.notifyDataSetChanged()
-        }
+
+        mainAdapter.notifyDataSetChanged()
+
 
         auth = Firebase.auth
         val currentUsers=auth.currentUser
