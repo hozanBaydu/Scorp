@@ -108,6 +108,8 @@ class Firebase @Inject constructor(
                             val currentName = document.get("currentName") as? String
                             val tagName = document.get("tagName") as? String
                             val tagUrl = document.get("tagUrl") as? String
+                            val vote = document.get("vote") as? String
+                            val tagVote = document.get("tagVote") as? String
                             val documentId = document.id
 
 
@@ -118,7 +120,7 @@ class Firebase @Inject constructor(
                                 tagName,
                                 dowloadUrl,
                                 documentId,
-                                tagUrl
+                                tagUrl,vote,tagVote
                             )
                             postArrayList.add(post)
                         }
@@ -129,14 +131,11 @@ class Firebase @Inject constructor(
     }
 
     fun updateData(id: String,selectedPicture: Uri) {
-
         auth = Firebase.auth
         firestore = Firebase.firestore
         storage = Firebase.storage
-
         val uuid = UUID.randomUUID()
         val imageName = "$uuid.jpg"
-
         val refererence = storage.reference
         val imageReference = refererence.child("images").child(imageName)
         if (selectedPicture != null) {
@@ -144,16 +143,9 @@ class Firebase @Inject constructor(
                 val uploadPictureReference = storage.reference.child("images").child(imageName)
                 uploadPictureReference.downloadUrl.addOnSuccessListener {
                     val dowlandUrl = it.toString()
-
                     firestore.collection("posts/").document(id).update("tagUrl", dowlandUrl)
-
                 }
-
-
-
-
             }
-
         }
     }
 
