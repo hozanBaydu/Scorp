@@ -22,33 +22,15 @@ class ScorpViewmodel @Inject constructor(
 
         firebase.upload(context,selectedPicture,tagText,currentName,commentText)
     }
-
     var currentUserName=String()
-
-
-
     var postArrayList=firebase.postArrayList
-
     fun update(id:String,selectedPicture: Uri){
         firebase.updateData(id,selectedPicture)
     }
-
     fun uploadVote(id: String,vote:String){
         firebase.uploadVote(id,vote)
     }
-
-
-
-
-
-
-
-
-
     fun getData(context: Context){
         firebase.getdata(context)
     }
-
-
-
 }

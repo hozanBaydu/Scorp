@@ -21,8 +21,8 @@ import javax.inject.Inject
 
 class MainAdapter @Inject constructor(
 
-    val glide : RequestManager
-
+    val glide : RequestManager,
+    private val firebase: com.hozanbaydu.scorp.service.Firebase
 ): RecyclerView.Adapter<MainAdapter.PostHolder>() {
     class PostHolder(val binding:MainRecyclerrowBinding): RecyclerView.ViewHolder(binding.root){
 
@@ -51,6 +51,8 @@ class MainAdapter @Inject constructor(
         holder.binding.tagName.text=postList.get(position).tagName
         var url=postList.get(position).dowlandUrl
         var tagUrl=postList.get(position).tagUrl
+        holder.binding.currentVote.text=postList.get(position).vote
+        holder.binding.tagVote.text=postList.get(position).tagVote
 
 
         glide.load(url).into(holder.binding.userImageview)
@@ -60,6 +62,8 @@ class MainAdapter @Inject constructor(
 
 
             holder.binding.tagImageview.setOnClickListener {
+
+
 
                 if (currentUsers?.displayName==holder.binding.tagName.text.toString()) {
                     holder.binding.tagImageview.findNavController().navigate(
@@ -71,7 +75,11 @@ class MainAdapter @Inject constructor(
 
                     var tageVoteNumber=holder.binding.tagVote.text.toString().toInt()+1
 
+
+
                     holder.binding.tagVote.text=tageVoteNumber.toString()
+
+                    firebase.uploadVote(postList.get(position).documentId,tageVoteNumber.toString())
 
 
 
@@ -82,6 +90,8 @@ class MainAdapter @Inject constructor(
             var currentVoteNumber=holder.binding.currentVote.text.toString().toInt()+1
 
             holder.binding.currentVote.text=currentVoteNumber.toString()
+
+            firebase.uploadVote(postList.get(position).documentId,currentVoteNumber.toString())
         }
 
 
